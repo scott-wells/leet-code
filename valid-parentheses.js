@@ -12,4 +12,31 @@
  */
 var isValid = function(s) {
     
+    let flag = false;
+
+    for (let i = 0; i < s.length; i+=2) {
+
+        if (s[i] === ")" || s[i] === "]" || s[i] === "}") flag = false;
+
+        switch (s[i]) {
+            case "(":
+                if (s[i+1] === ")") flag = true;
+                break;
+            case "[":
+                if (s[i+1] === "]") flag = true;
+                break;
+            case "{":
+                if (s[i+1] === "}") flag = true;
+                break;
+            default:
+                break; 
+        }
+    }
+    console.log(flag);
+    return flag;
 };
+
+isValid("()");
+isValid("()[]{}");
+isValid("(]");
+isValid("(){}}{");
