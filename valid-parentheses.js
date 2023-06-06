@@ -10,33 +10,36 @@
  * Open brackets must be closed in the correct order.
  * Every close bracket has a corresponding open bracket of the same type.
  */
-var isValid = function(s) {
+var isValid = function (s) {
     
-    let flag = false;
+    if (s.length % 2 !== 0) return false;
+    
+    let stack = [];
+    let closeOpen = { ")": "(", "]": "[", "}": "{" };
+    
+    for (let c of s) {
 
-    for (let i = 0; i < s.length; i+=2) {
-
-        if (s[i] === ")" || s[i] === "]" || s[i] === "}") flag = false;
-
-        switch (s[i]) {
-            case "(":
-                if (s[i+1] === ")") flag = true;
-                break;
-            case "[":
-                if (s[i+1] === "]") flag = true;
-                break;
-            case "{":
-                if (s[i+1] === "}") flag = true;
-                break;
-            default:
-                break; 
+        if (c in closeOpen) {
+            
+            if (stack.length && stack[stack.length - 1] === closeOpen[c]) {
+                stack.pop();
+                continue;
+            }
+            console.log(false);
+            return false;
         }
+
+        stack.push(c);
     }
-    console.log(flag);
-    return flag;
+    console.log(!stack.length ? true : false);
+    return !stack.length ? true : false;
 };
 
 isValid("()");
 isValid("()[]{}");
 isValid("(]");
 isValid("(){}}{");
+isValid("{()}");
+isValid("({{{{}}}))");
+isValid("([)]");
+isValid("([}}])");
