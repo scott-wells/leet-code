@@ -9,10 +9,9 @@
  * @return {number}
  */
 var strStr = function(haystack, needle) { 
-    let i = 0;
     let j = 0;
     let k = 0;
-    while (i < haystack.length) { // loop through haystack
+    for (let i = 0; i < haystack.length; i++) { // loop through haystack
         while (needle[j] === haystack[k]) { // as long as the letters match, keep looping
             // step your pointers forward
             k++;
@@ -27,8 +26,7 @@ var strStr = function(haystack, needle) {
             }
         }
         if (needle[j] !== haystack[k]) { // if letters don't match, step your pointers forward
-            i++;
-            k = i;
+            k = i+1;
             j = 0;
         }
     }
