@@ -21,3 +21,5 @@ var isPalindrome = function(x) {
 };
 
 console.log(isPalindrome(1001));
+console.log(isPalindrome(123321));
+console.log(isPalindrome(12332));
