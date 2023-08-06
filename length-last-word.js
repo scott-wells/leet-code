@@ -14,6 +14,7 @@ var lengthOfLastWord = function(s) {
         }
     }
 };
+// git test
 
 lengthOfLastWord("Hello World");
 lengthOfLastWord("   fly me   to   the moon  ");
